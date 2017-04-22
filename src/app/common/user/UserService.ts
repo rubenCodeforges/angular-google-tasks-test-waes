@@ -21,6 +21,10 @@ export class UserService {
         return this.user;
     }
 
+    public getToken(): string {
+        return sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
+    }
+
     public signIn() {
         this.googleAuthService.getAuth().subscribe((auth) => {
             auth.signIn().then(res => this.signInSuccessHandler(res), err => this.signInErrorHandler(err));

@@ -11,8 +11,8 @@ import {Http, HttpModule} from "@angular/http";
 import {PartsManagerModule} from "./partsManager/PartsManagerModule";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AppCommonModule} from "./common/AppCommonModule";
-import {TaskListComponent} from "./taskList/TaskListComponent";
 import {LoginComponent} from "./login/LoginComponent";
+import {HttpService} from "./infrastructure/http/HttpService";
 
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http);
@@ -36,8 +36,7 @@ export function HttpLoaderFactory(http: Http) {
     ],
     declarations: [
         AppComponent,
-        LoginComponent,
-        TaskListComponent
+        LoginComponent
     ],
     exports: [
         BrowserModule,
@@ -45,6 +44,9 @@ export function HttpLoaderFactory(http: Http) {
         NgbModule,
         TranslateModule,
         RouterModule
+    ],
+    providers: [
+        HttpService
     ],
     bootstrap: [AppComponent]
 })
