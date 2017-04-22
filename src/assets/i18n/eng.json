@@ -1,8 +1,10 @@
 {
-  "BRAND.NAME": "Google tasks",
-  "HOME.HEADER.TITLE": "This is the home page",
+  "BRAND.NAME": "Google tasks app",
   "FORM.BUTTON.SUBMIT": "Submit",
   "FORM.BUTTON.CANCEL": "Cancel",
   "FORM.BUTTON.ADD": "Add",
-  "FORM.VALIDATION.FIELD.REQUIRED": "This field is required"
+  "FORM.BUTTON.PROCEED": "Proceed",
+  "FORM.VALIDATION.FIELD.REQUIRED": "This field is required",
+  "HOME.HEADER.TITLE": "This is the home page",
+  "LOGIN.FORM.TITLE": "Please login with your google account"
 }

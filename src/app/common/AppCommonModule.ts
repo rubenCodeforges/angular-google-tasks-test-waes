@@ -4,10 +4,9 @@ import {AppCommonRoutes} from "./AppCommonRoutes";
 import {ErrorPageComponent} from "./errorPages/ErrorPageComponent";
 import {SidebarComponent} from "./sidebar/SidebarComponent";
 import {ToolbarComponent} from "./toolbar/ToolbarComponent";
-import {TaskListComponent} from "./taskList/TaskListComponent";
-import {TaskListModel} from "./taskList/services/TasklistModel";
-import {TaskListResource} from "./taskList/services/TasklistResource";
 import {TranslateModule} from "@ngx-translate/core";
+import {UserService} from "./user/UserService";
+import {GoogleAuthService} from "./google/GoogleAuthService";
 
 
 @NgModule({
@@ -18,7 +17,6 @@ import {TranslateModule} from "@ngx-translate/core";
     declarations: [
         SidebarComponent,
         ToolbarComponent,
-        TaskListComponent,
         ErrorPageComponent
     ],
     exports: [
@@ -26,8 +24,8 @@ import {TranslateModule} from "@ngx-translate/core";
         ToolbarComponent
     ],
     providers: [
-        TaskListModel,
-        TaskListResource
+        GoogleAuthService,
+        UserService
     ]
 })
 

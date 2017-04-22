@@ -1,5 +1,5 @@
 {
-  "name": "google tasks",
+  "name": "google-tasks",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
@@ -32,11 +32,13 @@
     "minimongo": "^4.3.0",
     "rxjs": "^5.2.0",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.8.4"
+    "zone.js": "0.8.5"
   },
   "devDependencies": {
     "@angular/cli": "^1.0.0",
     "@angular/compiler-cli": "4.0.0",
+    "@types/gapi": "0.0.31",
+    "@types/gapi.auth2": "0.0.35",
     "@types/jasmine": "2.5.38",
     "@types/lodash": "^4.14.61",
     "@types/node": "^6.0.42",

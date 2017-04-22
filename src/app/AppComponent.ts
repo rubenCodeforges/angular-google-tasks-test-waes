@@ -1,35 +1,21 @@
-import {Component, AfterViewInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
-import {GapiAuthInitConfig} from "./config/GapiAuthInitConfig";
-import {GoogleApi} from "./config/GoogleApi";
+import {UserService} from "./common/user/UserService";
 
 @Component({
     selector: 'app-root',
     templateUrl: 'app.html',
     styles: [require('./app.less')]
 })
-export class AppComponent implements AfterViewInit {
-    private GoogleAuth: any;
-    private gapiConfig: GapiAuthInitConfig;
+export class AppComponent {
 
-    constructor(translate: TranslateService) {
+    constructor(private userService: UserService,
+                translate: TranslateService) {
         translate.setDefaultLang('eng');
-        this.gapiConfig = new GoogleApi().getConfig();
     };
 
-    ngAfterViewInit(): void {
-        gapi.load('auth2', () => {
-            this.GoogleAuth = this.initGoogleApiAuth();
-            console.log(this.GoogleAuth.currentUser.get());
-            return this.GoogleAuth;
-        });
+    public isSignedIn(): boolean {
+        return this.userService.isUserSignedIn();
     }
 
-    public login() {
-        console.log(this.GoogleAuth.currentUser.get());
-    }
-
-    private initGoogleApiAuth() {
-        return gapi.auth2.init(this.gapiConfig)
-    }
 }
