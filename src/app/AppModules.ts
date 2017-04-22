@@ -11,6 +11,7 @@ import {Http, HttpModule} from "@angular/http";
 import {PartsManagerModule} from "./partsManager/PartsManagerModule";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AppCommonModule} from "./common/AppCommonModule";
+import {OAuthModule} from "angular-oauth2-oidc";
 
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http);
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         }),
         NgbModule.forRoot(),
+        OAuthModule.forRoot(),
         AppCommonModule
     ],
     declarations: [

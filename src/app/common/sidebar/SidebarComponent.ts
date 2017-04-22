@@ -8,5 +8,4 @@ import {ExtendedRoute, ExtendedRoutes} from "../infrastructure/routes/ExtendedRo
     styles: [require('./sidebar.less')]
 })
 export class SidebarComponent {
-
 }
