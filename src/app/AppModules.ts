@@ -13,6 +13,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AppCommonModule} from "./common/AppCommonModule";
 import {LoginComponent} from "./login/LoginComponent";
 import {HttpService} from "./infrastructure/http/HttpService";
+import {TasksModule} from "./tasks/TasksModule";
 
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http);
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: Http) {
             }
         }),
         NgbModule.forRoot(),
-        AppCommonModule
+        AppCommonModule,
+        TasksModule
     ],
     declarations: [
         AppComponent,

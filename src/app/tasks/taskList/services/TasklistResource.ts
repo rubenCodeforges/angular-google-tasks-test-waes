@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {HttpService} from "../../../infrastructure/http/HttpService";
-import {GoogleTasksApi} from "../../../config/GoogleTasksApi";
-import {UserService} from "../../user/UserService";
 import {Headers} from "@angular/http";
+import {GoogleTasksApi} from "../../../config/GoogleTasksApi";
+import {HttpService} from "../../../infrastructure/http/HttpService";
+import {UserService} from "../../../common/user/UserService";
 
 @Injectable()
 export class TaskListResource {

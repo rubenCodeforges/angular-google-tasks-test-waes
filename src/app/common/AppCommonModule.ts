@@ -7,22 +7,20 @@ import {ToolbarComponent} from "./toolbar/ToolbarComponent";
 import {TranslateModule} from "@ngx-translate/core";
 import {UserService} from "./user/UserService";
 import {GoogleAuthService} from "./google/GoogleAuthService";
-import {TaskListResource} from "./taskList/services/TasklistResource";
-import {TaskListModel} from "./taskList/services/TasklistModel";
-import {TaskListComponent} from "./taskList/TaskListComponent";
 import {BrowserModule} from "@angular/platform-browser";
+import {TasksModule} from "../tasks/TasksModule";
 
 
 @NgModule({
     imports: [
         BrowserModule,
         RouterModule.forChild(AppCommonRoutes),
-        TranslateModule
+        TranslateModule,
+        TasksModule
     ],
     declarations: [
         SidebarComponent,
         ToolbarComponent,
-        TaskListComponent,
         ErrorPageComponent
     ],
     exports: [
@@ -31,8 +29,6 @@ import {BrowserModule} from "@angular/platform-browser";
     ],
     providers: [
         GoogleAuthService,
-        TaskListResource,
-        TaskListModel,
         UserService
     ]
 })
