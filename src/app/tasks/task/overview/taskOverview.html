@@ -17,7 +17,7 @@
                         <th translate>TASKS.OVERVIEW.TABLE.NOTES</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody [dragula]='"first-bag"' [dragulaModel]='getLoadedTasks()'>
                     <tr *ngFor="let task of getLoadedTasks()" [ngClass]="isCompleted(task)">
                         <td>{{task.title}}</td>
                         <td>{{task.notes}}</td>

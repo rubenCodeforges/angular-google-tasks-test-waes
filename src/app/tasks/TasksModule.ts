@@ -16,12 +16,14 @@ import {TasklistEditModalComponent} from "./taskList/modal/TasklistEditModalComp
 import {TaskResource} from "./task/services/TaskResource";
 import {TaskModel} from "./task/services/TaskModel";
 import {TaskCreateModalComponent} from "./task/modal/TaskCreateModalComponent";
+import {DragulaModule} from "ng2-dragula";
 
 @NgModule({
     imports: [
         BrowserModule,
         TranslateModule,
         NgbModule,
+        DragulaModule,
         FormsModule,
         RouterModule.forChild(TasksRoutes)
     ],
