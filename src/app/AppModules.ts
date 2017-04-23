@@ -20,7 +20,7 @@ import {environment} from "../environments/environment";
 export function HttpLoaderFactory(http: Http) {
     let prefix: string = environment.production ?
         `${environment.base}assets/i18n/` : '/assets/i18n/';
-    return new TranslateHttpLoader(http);
+    return new TranslateHttpLoader(http, prefix);
 }
 
 @NgModule({
