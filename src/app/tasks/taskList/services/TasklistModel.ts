@@ -5,8 +5,17 @@ import {Observable} from "rxjs";
 @Injectable()
 export class TaskListModel {
     private currentTasklist: Tasklist = undefined;
+    private tasklists: Tasklist[] = [];
 
     constructor(private resource: TaskListResource) {
+    }
+
+    loadTasklist() {
+        this.getAllTasklists().subscribe(tasklists => this.tasklists = tasklists);
+    }
+
+    getLoadedTasklists(): Tasklist[] {
+        return this.tasklists;
     }
 
     setCurrentTasklist(tasklist: Tasklist) {

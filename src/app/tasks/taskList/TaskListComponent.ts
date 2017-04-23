@@ -7,11 +7,11 @@ import {Tasklist} from "./services/TasklistResource";
     template: require('./taskList.html')
 })
 export class TaskListComponent {
-    public taskItems: Tasklist[] = [];
-
     constructor(private model: TaskListModel) {
-        this.model.getAllTasklists().subscribe((items) => {
-            this.taskItems = items;
-        });
+        this.model.loadTasklist();
+    }
+
+    public getTasklists(): Tasklist[] {
+        return this.model.getLoadedTasklists();
     }
 }

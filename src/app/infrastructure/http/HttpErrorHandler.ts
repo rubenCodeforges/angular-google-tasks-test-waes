@@ -8,7 +8,6 @@ import {Injectable} from "@angular/core";
 export class HttpErrorHandler {
 
     constructor(private securityService: SecurityService) {
-        console.log(this.securityService);
     }
 
     /**

@@ -28,6 +28,7 @@ export class TasklistCreateModalComponent {
     }
 
     public onClose() {
+        this.model.loadTasklist();
         this.activeModal.close();
     }
 

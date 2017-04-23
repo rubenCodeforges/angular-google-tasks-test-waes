@@ -26,7 +26,7 @@ export class TaskListResource implements CrudResource {
     }
 
     create(tasklist: Tasklist): Observable<Tasklist> {
-        return this.httpService.post(this.ENDPOINT_URL + "/" + tasklist.id, tasklist, {headers: this.authHeader})
+        return this.httpService.post(this.ENDPOINT_URL, tasklist, {headers: this.authHeader})
     }
 
     update(tasklist: Tasklist): Observable<Tasklist> {
