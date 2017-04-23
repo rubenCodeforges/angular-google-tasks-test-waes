@@ -3,19 +3,20 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormService} from "../../../infrastructure/form/FormService";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TaskListModel} from "../services/TasklistModel";
-import {Tasklist} from "../services/TasklistResource";
+import {Task} from "../services/TaskResource";
+import {TaskModel} from "../services/TaskModel";
 import {Observable} from "rxjs";
 
 @Component({
-    selector: 'tasklist-create-modal',
-    template: require('./tasklistCreateModal.html')
+    selector: 'task-create-modal',
+    template: require('./taskCreateModal.html')
 })
-export class TasklistCreateModalComponent {
+export class TaskCreateModalComponent {
 
-    public newTasklist: Tasklist = <Tasklist> {};
+    public task: Task = <Task> {};
 
     constructor(private activeModal: NgbActiveModal,
-                private model: TaskListModel) {
+                private model: TaskModel) {
     }
 
     public onSubmit(form: FormGroup) {
@@ -23,7 +24,7 @@ export class TasklistCreateModalComponent {
             FormService.markFormControlsTouched(form);
             return;
         }
-        Observable.of(this.model.createTasklist(this.newTasklist))
+        Observable.of(this.model.createTask(this.task))
             .subscribe(() => this.onClose());
     }
 

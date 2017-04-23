@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Tasklist, TaskListResource} from "./TasklistResource";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import * as _ from "lodash";
 
@@ -15,10 +15,6 @@ export class TaskListModel {
 
     loadTasklist() {
         this.getAllTasklists().subscribe(tasklists => this.tasklists = tasklists);
-    }
-
-    addTasklist(tasklist: Tasklist) {
-        this.tasklists.push(tasklist);
     }
 
     getLoadedTasklists(): Tasklist[] {
@@ -41,13 +37,15 @@ export class TaskListModel {
         return this.resource.findById(id);
     }
 
-    createTasklist(tasklist: Tasklist): Observable<Tasklist> {
-        return this.resource.create(tasklist);
+    createTasklist(tasklist: Tasklist): Subscription {
+        return this.resource.create(tasklist)
+            .subscribe(() => this.tasklists.push(tasklist));
     }
 
-    updateTasklist(tasklist: Tasklist): Observable<Tasklist> {
+    updateTasklist(tasklist: Tasklist): Subscription {
         let observable: Observable<Tasklist> = this.resource.update(tasklist);
-        observable.subscribe((tasklist) => {
+
+        return observable.subscribe((tasklist) => {
             this.tasklists = _.map(this.tasklists, (tl) => {
                 if (tl.id == tasklist.id) {
                     return tasklist;
@@ -55,7 +53,6 @@ export class TaskListModel {
                 return tl;
             });
         });
-        return observable;
     }
 
     deleteCurrentTasklist(): void {

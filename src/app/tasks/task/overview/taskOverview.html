@@ -1,7 +1,12 @@
 <div class="card">
     <div class="card-block">
         <div class="card-title-block">
-            <h3 class="title" translate>TASKS.OVERVIEW.TITLE</h3>
+            <h3 class="title pull-left" translate>TASKS.OVERVIEW.TITLE</h3>
+            <a href="" class="btn btn-primary btn-sm rounded-s pull-right"
+               (click)="create(); $event.preventDefault()"
+               translate>
+                TASKS.OVERVIEW.TABLE.CREATE
+            </a>
         </div>
         <section class="section">
             <div class="table-responsive">

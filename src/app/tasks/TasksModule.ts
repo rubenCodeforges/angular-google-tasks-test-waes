@@ -15,6 +15,7 @@ import {FormsModule} from "@angular/forms";
 import {TasklistEditModalComponent} from "./taskList/modal/TasklistEditModalComponent";
 import {TaskResource} from "./task/services/TaskResource";
 import {TaskModel} from "./task/services/TaskModel";
+import {TaskCreateModalComponent} from "./task/modal/TaskCreateModalComponent";
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import {TaskModel} from "./task/services/TaskModel";
     ],
     declarations: [
         TaskListComponent,
+        TaskCreateModalComponent,
         TaskOverviewComponent,
         TaskDetailComponent,
         TasklistCreateModalComponent,
@@ -44,7 +46,8 @@ import {TaskModel} from "./task/services/TaskModel";
     ],
     entryComponents: [
         TasklistCreateModalComponent,
-        TasklistEditModalComponent
+        TasklistEditModalComponent,
+        TaskCreateModalComponent
     ]
 })
 export class TasksModule {

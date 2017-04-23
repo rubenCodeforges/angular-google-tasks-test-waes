@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Task, TaskResource} from "./TaskResource";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {TaskListModel} from "../../taskList/services/TasklistModel";
+import * as _ from "lodash";
 
 @Injectable()
 export class TaskModel {
@@ -12,12 +13,13 @@ export class TaskModel {
     }
 
     loadTasks() {
-        this.getAllTasks().subscribe(tasks => this.tasks = tasks);
+        this.getAllTasks().subscribe(tasks => this.tasks = tasks || []);
     }
 
     getLoadedTasks(): Task[] {
         return this.tasks;
     }
+
 
     getAllTasks(): Observable<Task[]> {
         return this.resource.findAll(
@@ -29,15 +31,31 @@ export class TaskModel {
         return this.resource.findById(this.taskListModel.getCurrentTasklistId(), id);
     }
 
-    createTask(task: Task): Observable<Task> {
-        return this.resource.create(this.taskListModel.getCurrentTasklistId(), task);
+    createTask(task: Task): Subscription {
+        let observable: Observable<Task> =
+            this.resource.create(this.taskListModel.getCurrentTasklistId(), task);
+
+        return observable.subscribe(task => this.tasks.push(task));
     }
 
-    updateTask(task: Task): Observable<Task> {
-        return this.resource.update(this.taskListModel.getCurrentTasklistId(), task);
+    updateTask(task: Task): Subscription {
+        let observable: Observable<Task> =
+            this.resource.update(this.taskListModel.getCurrentTasklistId(), task);
+
+        return observable.subscribe((task) => {
+            this.tasks = _.map(this.tasks, (t) => {
+                if (t.id == task.id) {
+                    return task;
+                }
+                return t;
+            });
+        });
     }
 
-    deleteTask(id: string): Observable<void> {
-        return this.resource.delete(this.taskListModel.getCurrentTasklistId(), id);
+    deleteTask(id: string): void {
+        this.resource.delete(this.taskListModel.getCurrentTasklistId(), id)
+            .subscribe(() => {
+                _.remove(this.tasks, (task) => task.id == id);
+            });
     }
 }

@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {TaskListModel} from "../../taskList/services/TasklistModel";
 import {Task} from "app/tasks/task/services/TaskResource";
 import {TaskModel} from "../services/TaskModel";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {TaskCreateModalComponent} from "app/tasks/task/modal/TaskCreateModalComponent";
 
 @Component({
     selector: 'task-overview',
@@ -11,6 +13,7 @@ import {TaskModel} from "../services/TaskModel";
 })
 export class TaskOverviewComponent implements OnInit {
     constructor(private route: ActivatedRoute,
+                private modalService: NgbModal,
                 private taskModel: TaskModel,
                 private tasklistModel: TaskListModel) {
     }
@@ -24,6 +27,10 @@ export class TaskOverviewComponent implements OnInit {
 
     public getLoadedTasks(): Task[] {
         return this.taskModel.getLoadedTasks();
+    }
+
+    public create() {
+        this.modalService.open(TaskCreateModalComponent);
     }
 
     public isCompleted(task: Task): any {

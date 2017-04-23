@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {TaskListModel} from "../services/TasklistModel";
 import {Tasklist} from "../services/TasklistResource";
 import * as _ from "lodash";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'tasklist-edit-modal',
@@ -26,9 +27,8 @@ export class TasklistEditModalComponent {
             FormService.markFormControlsTouched(form);
             return;
         }
-        this.model.updateTasklist(this.tasklist).subscribe(() => {
-            this.onClose();
-        });
+        Observable.of(this.model.updateTasklist(this.tasklist))
+            .subscribe(() => this.onClose());
     }
 
     public onClose() {
