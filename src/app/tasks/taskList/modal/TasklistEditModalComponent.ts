@@ -20,7 +20,7 @@ export class TasklistEditModalComponent {
         let list = _.find(this.model.getLoadedTasklists(), (tasklist) => {
             return tasklist.id == this.model.getCurrentTasklistId();
         });
-        
+
         this.tasklist = _.clone(list);
     }
 
