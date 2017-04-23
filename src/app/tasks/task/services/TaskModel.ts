@@ -12,8 +12,8 @@ export class TaskModel {
                 private resource: TaskResource) {
     }
 
-    loadTasks() {
-        this.getAllTasks().subscribe(tasks => this.tasks = tasks || []);
+    loadTasks(tasklistId?: string): Subscription {
+        return this.getAllTasks(tasklistId).subscribe(tasks => this.tasks = tasks || []);
     }
 
     getLoadedTasks(): Task[] {
@@ -21,10 +21,10 @@ export class TaskModel {
     }
 
 
-    getAllTasks(): Observable<Task[]> {
-        return this.resource.findAll(
-            this.taskListModel.getCurrentTasklistId()
-        ).map((res) => res.items);
+    getAllTasks(tasklistId?: string): Observable<Task[]> {
+
+        return this.resource.findAll(tasklistId || this.taskListModel.getCurrentTasklistId())
+            .map((res) => res.items);
     }
 
     getTask(id: string): Observable<Task> {

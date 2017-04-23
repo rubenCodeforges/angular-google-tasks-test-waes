@@ -24,7 +24,6 @@ export class TaskOverviewComponent implements OnInit {
     ngOnInit(): void {
         this.route.params.subscribe((param) => {
             this.tasklistModel.setCurrentTasklistId(param['listId']);
-            this.taskModel.loadTasks();
         });
     }
 

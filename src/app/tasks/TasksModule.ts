@@ -17,6 +17,7 @@ import {TaskResource} from "./task/services/TaskResource";
 import {TaskModel} from "./task/services/TaskModel";
 import {TaskCreateModalComponent} from "./task/modal/TaskCreateModalComponent";
 import {DragulaModule} from "ng2-dragula";
+import {TaskOverviewResolver} from "./task/services/TaskOverviewResolver";
 
 @NgModule({
     imports: [
@@ -44,7 +45,8 @@ import {DragulaModule} from "ng2-dragula";
         TaskListResource,
         TaskListModel,
         TaskResource,
-        TaskModel
+        TaskModel,
+        TaskOverviewResolver
     ],
     entryComponents: [
         TasklistCreateModalComponent,
