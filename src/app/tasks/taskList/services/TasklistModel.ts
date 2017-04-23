@@ -46,7 +46,16 @@ export class TaskListModel {
     }
 
     updateTasklist(tasklist: Tasklist): Observable<Tasklist> {
-        return this.resource.update(tasklist);
+        let observable: Observable<Tasklist> = this.resource.update(tasklist);
+        observable.subscribe((tasklist) => {
+            this.tasklists = _.map(this.tasklists, (tl) => {
+                if (tl.id == tasklist.id) {
+                    return tasklist;
+                }
+                return tl;
+            });
+        });
+        return observable;
     }
 
     deleteCurrentTasklist(): void {

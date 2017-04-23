@@ -4,6 +4,7 @@ import {FormService} from "../../../infrastructure/form/FormService";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TaskListModel} from "../services/TasklistModel";
 import {Tasklist} from "../services/TasklistResource";
+import * as _ from "lodash";
 
 @Component({
     selector: 'tasklist-edit-modal',
@@ -11,10 +12,13 @@ import {Tasklist} from "../services/TasklistResource";
 })
 export class TasklistEditModalComponent {
 
-    public newTasklist: Tasklist = <Tasklist> {};
+    public tasklist: Tasklist;
 
     constructor(private activeModal: NgbActiveModal,
                 private model: TaskListModel) {
+        this.tasklist = _.find(this.model.getLoadedTasklists(), (tasklist) => {
+            return tasklist.id == this.model.getCurrentTasklistId();
+        })
     }
 
     public onSubmit(form: FormGroup) {
@@ -22,7 +26,7 @@ export class TasklistEditModalComponent {
             FormService.markFormControlsTouched(form);
             return;
         }
-        this.model.createTasklist(this.newTasklist).subscribe(() => {
+        this.model.updateTasklist(this.tasklist).subscribe(() => {
             this.onClose();
         });
     }

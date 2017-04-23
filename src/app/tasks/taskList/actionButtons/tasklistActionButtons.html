@@ -7,7 +7,7 @@
     </li>
     <ng-container *ngIf="isTasklistSelected()">
         <li>
-            <a href="" class="button-update">
+            <a href="" class="button-update" (click)="update(); $event.preventDefault()">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
                 {{ "TASKLIST.FORM.UPDATE" | translate }}
             </a>

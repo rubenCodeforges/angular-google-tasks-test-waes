@@ -17,7 +17,7 @@
                 <label class="control-label" translate>TASKLIST.FORM.TASKLIST_TITLE</label>
                 <input type="text"
                        name="tasklistTitle"
-                       [(ngModel)]="newTasklist.title"
+                       [(ngModel)]="tasklist.title"
                        class="form-control boxed"
                        required>
                 <span *ngIf="hasError(form.controls['tasklistTitle'])"

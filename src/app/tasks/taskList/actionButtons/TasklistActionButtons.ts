@@ -4,6 +4,7 @@ import * as _ from "lodash";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TasklistCreateModalComponent} from "../modal/TasklistCreateModalComponent";
 import {DeleteConfirmationModal} from "../../../common/modal/DeleteConfirmationModal";
+import {TasklistEditModalComponent} from "../modal/TasklistEditModalComponent";
 
 @Component({
     selector: 'tasklist-action-buttons',
@@ -26,7 +27,7 @@ export class TasklistActionButtons {
     }
 
     public update() {
-
+        let modalRef = this.modalService.open(TasklistEditModalComponent);
     }
 
     public deleteTasklist() {
