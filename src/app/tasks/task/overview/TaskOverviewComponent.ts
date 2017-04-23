@@ -6,7 +6,8 @@ import {TaskModel} from "../services/TaskModel";
 
 @Component({
     selector: 'task-overview',
-    template: require('./taskOverview.html')
+    template: require('./taskOverview.html'),
+    styles: [require('./taskOverview.less')]
 })
 export class TaskOverviewComponent implements OnInit {
     constructor(private route: ActivatedRoute,
@@ -23,5 +24,9 @@ export class TaskOverviewComponent implements OnInit {
 
     public getLoadedTasks(): Task[] {
         return this.taskModel.getLoadedTasks();
+    }
+
+    public isCompleted(task: Task): any {
+        return {'completed': task.completed}
     }
 }

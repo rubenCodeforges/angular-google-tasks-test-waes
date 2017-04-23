@@ -1,14 +1,26 @@
-<div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr>
-            <th translate>TASKS.OVERVIEW.TITLE</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let task of getLoadedTasks()">
-            <td>{{task.title}}</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="card">
+    <div class="card-block">
+        <div class="card-title-block">
+            <h3 class="title" translate>TASKS.OVERVIEW.TITLE</h3>
+        </div>
+        <section class="section">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th translate>TASKS.OVERVIEW.TABLE.TITLE</th>
+                        <th translate>TASKS.OVERVIEW.TABLE.NOTES</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let task of getLoadedTasks()" [ngClass]="isCompleted(task)">
+                        <td>{{task.title}}</td>
+                        <td>{{task.notes}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
 </div>
