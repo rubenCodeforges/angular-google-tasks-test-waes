@@ -5,6 +5,7 @@ import {GoogleTasksApi} from "../../../config/GoogleTasksApi";
 import {HttpService} from "../../../infrastructure/http/HttpService";
 import {UserService} from "../../../common/user/UserService";
 import {CrudResource} from "../../../infrastructure/crud/CrudResource";
+import {ListResponse} from "../../_internal/ListResponse";
 
 @Injectable()
 export class TaskListResource implements CrudResource {
@@ -30,17 +31,14 @@ export class TaskListResource implements CrudResource {
     }
 
     update(tasklist: Tasklist): Observable<Tasklist> {
-        return this.httpService.put(this.ENDPOINT_URL, tasklist, {headers: this.authHeader})
+        return this.httpService.put(this.ENDPOINT_URL + "/" + tasklist.id, tasklist, {headers: this.authHeader})
     }
 
     delete(id: string): Observable<void> {
         return this.httpService.get(this.ENDPOINT_URL + "/" + id, {headers: this.authHeader})
     }
 }
-export interface TasklistListResponse {
-    kind: string;
-    etag: string;
-    nextPageToken: string;
+export interface TasklistListResponse extends ListResponse {
     items: Tasklist[];
 }
 

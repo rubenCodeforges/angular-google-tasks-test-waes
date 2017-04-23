@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class TaskListModel {
-    private currentTasklist: Tasklist = undefined;
+    private currentTasklistId: string;
     private tasklists: Tasklist[] = [];
 
     constructor(private resource: TaskListResource) {
@@ -18,12 +18,12 @@ export class TaskListModel {
         return this.tasklists;
     }
 
-    setCurrentTasklist(tasklist: Tasklist) {
-        this.currentTasklist = tasklist;
+    setCurrentTasklistId(tasklistId: string) {
+        this.currentTasklistId = tasklistId;
     }
 
-    getCurrentTasklist() {
-        return this.currentTasklist;
+    getCurrentTasklistId(): string {
+        return this.currentTasklistId;
     }
 
     getAllTasklists(): Observable<Tasklist[]> {

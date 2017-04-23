@@ -13,6 +13,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {TasklistCreateModalComponent} from "./taskList/modal/TasklistCreateModalComponent";
 import {FormsModule} from "@angular/forms";
 import {TasklistEditModalComponent} from "./taskList/modal/TasklistEditModalComponent";
+import {TaskResource} from "./task/services/TaskResource";
+import {TaskModel} from "./task/services/TaskModel";
 
 @NgModule({
     imports: [
@@ -36,7 +38,9 @@ import {TasklistEditModalComponent} from "./taskList/modal/TasklistEditModalComp
     ],
     providers: [
         TaskListResource,
-        TaskListModel
+        TaskListModel,
+        TaskResource,
+        TaskModel
     ],
     entryComponents: [
         TasklistCreateModalComponent,

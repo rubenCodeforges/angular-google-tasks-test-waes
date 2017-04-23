@@ -17,7 +17,7 @@ export class TasklistActionButtons {
     }
 
     public isTasklistSelected(): boolean {
-        return !_.isEmpty(this.model.getCurrentTasklist());
+        return !_.isEmpty(this.model.getCurrentTasklistId());
     }
 
     public create() {
