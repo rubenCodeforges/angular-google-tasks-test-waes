@@ -11,5 +11,6 @@
   "TASKLIST.FORM.CREATE": "Create new Tasklist",
   "TASKLIST.FORM.UPDATE": "Update current Tasklist",
   "TASKLIST.FORM.DELETE": "Delete current Tasklist",
-  "TASKLIST.FORM.TASKLIST_TITLE": "Tasklist title"
+  "TASKLIST.FORM.TASKLIST_TITLE": "Tasklist title",
+  "TASKS.OVERVIEW.TITLE": "Title"
 }

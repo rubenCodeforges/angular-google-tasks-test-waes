@@ -1,1 +1,14 @@
-<h2>overview</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th translate>TASKS.OVERVIEW.TITLE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of getLoadedTasks()">
+            <td>{{task.title}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
