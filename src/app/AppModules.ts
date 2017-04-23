@@ -14,6 +14,7 @@ import {AppCommonModule} from "./common/AppCommonModule";
 import {LoginComponent} from "./login/LoginComponent";
 import {HttpService} from "./infrastructure/http/HttpService";
 import {TasksModule} from "./tasks/TasksModule";
+import {HttpErrorHandler} from "./infrastructure/http/HttpErrorHandler";
 
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http);
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(http: Http) {
         RouterModule
     ],
     providers: [
-        HttpService
+        HttpService,
+        HttpErrorHandler
     ],
     bootstrap: [AppComponent]
 })

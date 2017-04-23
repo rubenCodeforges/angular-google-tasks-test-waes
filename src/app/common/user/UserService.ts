@@ -31,9 +31,15 @@ export class UserService {
         });
     }
 
+    //TODO: Rework
     public signOut(): void {
         this.googleAuthService.getAuth().subscribe((auth) => {
-            auth.signOut().then(() => sessionStorage.removeItem(UserService.SESSION_STORAGE_KEY));
+            try {
+                auth.signOut();
+            } catch (e) {
+                console.error(e);
+            }
+            sessionStorage.removeItem(UserService.SESSION_STORAGE_KEY)
         });
     }
 

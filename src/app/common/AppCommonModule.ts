@@ -9,6 +9,8 @@ import {UserService} from "./user/UserService";
 import {GoogleAuthService} from "./google/GoogleAuthService";
 import {BrowserModule} from "@angular/platform-browser";
 import {TasksModule} from "../tasks/TasksModule";
+import {SecurityService} from "./security/SecurityService";
+import {AuthGuard} from "./security/AuthGuard";
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {TasksModule} from "../tasks/TasksModule";
     ],
     providers: [
         GoogleAuthService,
+        SecurityService,
+        AuthGuard,
         UserService
     ]
 })
