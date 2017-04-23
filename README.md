@@ -2,7 +2,7 @@
 
 [Demo](http://codeforges.com/google-tasks/)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.21.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli)
 
 ## Intallation 
 - clone project
