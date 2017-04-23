@@ -3,6 +3,7 @@ import {TaskListModel} from "../services/TasklistModel";
 import * as _ from "lodash";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TasklistCreateModalComponent} from "../modal/TasklistCreateModalComponent";
+import {DeleteConfirmationModal} from "../../../common/modal/DeleteConfirmationModal";
 
 @Component({
     selector: 'tasklist-action-buttons',
@@ -28,7 +29,11 @@ export class TasklistActionButtons {
 
     }
 
-    public delete() {
-
+    public deleteTasklist() {
+        this.modalService.open(DeleteConfirmationModal).result.then((res) => {
+            if (res.confirmed) {
+                this.model.deleteCurrentTasklist()
+            }
+        })
     }
 }

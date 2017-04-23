@@ -1,17 +1,24 @@
 import {Injectable} from "@angular/core";
 import {Tasklist, TaskListResource} from "./TasklistResource";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
+import * as _ from "lodash";
 
 @Injectable()
 export class TaskListModel {
     private currentTasklistId: string;
     private tasklists: Tasklist[] = [];
 
-    constructor(private resource: TaskListResource) {
+    constructor(private resource: TaskListResource,
+                private router: Router) {
     }
 
     loadTasklist() {
         this.getAllTasklists().subscribe(tasklists => this.tasklists = tasklists);
+    }
+
+    addTasklist(tasklist: Tasklist) {
+        this.tasklists.push(tasklist);
     }
 
     getLoadedTasklists(): Tasklist[] {
@@ -42,7 +49,11 @@ export class TaskListModel {
         return this.resource.update(tasklist);
     }
 
-    deleteTasklist(id: string): Observable<void> {
-        return this.resource.delete(id);
+    deleteCurrentTasklist(): void {
+        this.resource.delete(this.currentTasklistId).subscribe(() => {
+            _.remove(this.tasklists, (tasklist) => tasklist.id == this.currentTasklistId);
+            this.currentTasklistId = undefined;
+            this.router.navigateByUrl("");
+        });
     }
 }

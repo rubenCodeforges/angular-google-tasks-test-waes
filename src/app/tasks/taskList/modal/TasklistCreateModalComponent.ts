@@ -22,13 +22,13 @@ export class TasklistCreateModalComponent {
             FormService.markFormControlsTouched(form);
             return;
         }
-        this.model.createTasklist(this.newTasklist).subscribe(() => {
+        this.model.createTasklist(this.newTasklist).subscribe((tasklist) => {
+            this.model.addTasklist(tasklist);
             this.onClose();
         });
     }
 
     public onClose() {
-        this.model.loadTasklist();
         this.activeModal.close();
     }
 

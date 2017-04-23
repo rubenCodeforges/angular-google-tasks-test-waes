@@ -35,7 +35,7 @@ export class TaskListResource implements CrudResource {
     }
 
     delete(id: string): Observable<void> {
-        return this.httpService.get(this.ENDPOINT_URL + "/" + id, {headers: this.authHeader})
+        return this.httpService.delete(this.ENDPOINT_URL + "/" + id, {headers: this.authHeader})
     }
 }
 export interface TasklistListResponse extends ListResponse {

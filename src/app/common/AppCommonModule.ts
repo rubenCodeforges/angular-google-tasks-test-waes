@@ -11,6 +11,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {TasksModule} from "../tasks/TasksModule";
 import {SecurityService} from "./security/SecurityService";
 import {AuthGuard} from "./security/AuthGuard";
+import {DeleteConfirmationModal} from "./modal/DeleteConfirmationModal";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {AuthGuard} from "./security/AuthGuard";
     declarations: [
         SidebarComponent,
         ToolbarComponent,
-        ErrorPageComponent
+        ErrorPageComponent,
+        DeleteConfirmationModal
     ],
     exports: [
         SidebarComponent,
@@ -34,6 +36,9 @@ import {AuthGuard} from "./security/AuthGuard";
         SecurityService,
         AuthGuard,
         UserService
+    ],
+    entryComponents: [
+        DeleteConfirmationModal
     ]
 })
 

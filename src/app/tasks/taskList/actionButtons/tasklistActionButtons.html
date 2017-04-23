@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="" class="button-delete">
+            <a href="" class="button-delete" (click)="deleteTasklist(); $event.preventDefault()">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 {{ "TASKLIST.FORM.DELETE" | translate }}
             </a>
