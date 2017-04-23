@@ -15,8 +15,11 @@ import {LoginComponent} from "./login/LoginComponent";
 import {HttpService} from "./infrastructure/http/HttpService";
 import {TasksModule} from "./tasks/TasksModule";
 import {HttpErrorHandler} from "./infrastructure/http/HttpErrorHandler";
+import {environment} from "../environments/environment";
 
 export function HttpLoaderFactory(http: Http) {
+    let prefix: string = environment.production ?
+        `${environment.base}assets/i18n/` : '/assets/i18n/';
     return new TranslateHttpLoader(http);
 }
 

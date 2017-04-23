@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  base: '/angular-google-tasks-test-waes/'
 };

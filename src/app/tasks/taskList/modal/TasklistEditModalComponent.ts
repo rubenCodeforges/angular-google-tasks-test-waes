@@ -17,9 +17,11 @@ export class TasklistEditModalComponent {
 
     constructor(private activeModal: NgbActiveModal,
                 private model: TaskListModel) {
-        this.tasklist = _.find(this.model.getLoadedTasklists(), (tasklist) => {
+        let list = _.find(this.model.getLoadedTasklists(), (tasklist) => {
             return tasklist.id == this.model.getCurrentTasklistId();
-        })
+        });
+        
+        this.tasklist = _.clone(list);
     }
 
     public onSubmit(form: FormGroup) {

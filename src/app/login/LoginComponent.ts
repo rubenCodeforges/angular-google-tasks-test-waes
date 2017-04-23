@@ -11,6 +11,6 @@ export class LoginComponent {
     }
 
     public signIn() {
-        this.userService.signIn()
+        this.userService.signIn();
     }
 }
