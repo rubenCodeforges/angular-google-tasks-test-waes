@@ -7,5 +7,9 @@
   "FORM.BUTTON.PROCEED": "Proceed",
   "FORM.VALIDATION.FIELD.REQUIRED": "This field is required",
   "HOME.HEADER.TITLE": "This is the home page",
-  "LOGIN.FORM.TITLE": "Please login with your google account"
+  "LOGIN.FORM.TITLE": "Please login with your google account",
+  "TASKLIST.FORM.CREATE": "Create new Tasklist",
+  "TASKLIST.FORM.UPDATE": "Update current Tasklist",
+  "TASKLIST.FORM.DELETE": "Delete current Tasklist",
+  "TASKLIST.FORM.TASKLIST_TITLE": "Tasklist title"
 }

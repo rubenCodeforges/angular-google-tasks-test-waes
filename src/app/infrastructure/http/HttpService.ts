@@ -21,6 +21,18 @@ export class HttpService {
             .catch(HttpExceptionHandler.handleError)
     }
 
+    public put(url: string, requestBody: any, options?: RequestOptionsArgs): Observable<any> {
+        return this.http.put(url, requestBody, options)
+            .map(HttpService.toJsonResponse)
+            .catch(HttpExceptionHandler.handleError)
+    }
+
+    public delete(url: string, options?: RequestOptionsArgs): Observable<any> {
+        return this.http.delete(url, options)
+            .map(HttpService.toJsonResponse)
+            .catch(HttpExceptionHandler.handleError);
+    }
+
     private static toJsonResponse(response: Response): JSON | number {
         try {
             return response.json();

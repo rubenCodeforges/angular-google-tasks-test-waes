@@ -1,16 +1,16 @@
 import {Component} from "@angular/core";
-import {TaskItem} from "./services/TasklistResource";
 import {TaskListModel} from "./services/TasklistModel";
+import {Tasklist} from "./services/TasklistResource";
 
 @Component({
-    selector: 'task-list',
+    selector: 'tasklist',
     template: require('./taskList.html')
 })
 export class TaskListComponent {
-    public taskItems: TaskItem[] = [];
+    public taskItems: Tasklist[] = [];
 
     constructor(private model: TaskListModel) {
-        this.model.getAllTaskItems().subscribe((items) => {
+        this.model.getAllTasklists().subscribe((items) => {
             this.taskItems = items;
         });
     }
