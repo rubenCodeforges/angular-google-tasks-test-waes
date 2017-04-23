@@ -3,11 +3,13 @@ import {Observable} from "rxjs";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {SecurityService} from "../../common/security/SecurityService";
 import {Injectable} from "@angular/core";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class HttpErrorHandler {
 
-    constructor(private securityService: SecurityService) {
+    constructor(private securityService: SecurityService,
+                private router: Router) {
     }
 
     /**
@@ -21,8 +23,16 @@ export class HttpErrorHandler {
         let serverResponse: any = response.statusText == "OK" ? response.json() : {};
 
         this.securityService.denyAndRedirectOnAuthError(serverResponse);
+        this.redirectToErrorPage(response);
 
         console.error(errMsg);
         return Observable.throw({message: errMsg, code: response.status, error: serverResponse})
     }
+
+    private redirectToErrorPage(response: Response) {
+        if(response.status === 404 || response.status === 400 || response.status === 500) {
+            this.router.navigate(['error', response.status]);
+        }
+    }
+
 }
