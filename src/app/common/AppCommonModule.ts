@@ -12,6 +12,7 @@ import {TasksModule} from "../tasks/TasksModule";
 import {SecurityService} from "./security/SecurityService";
 import {AuthGuard} from "./security/AuthGuard";
 import {DeleteConfirmationModal} from "./modal/DeleteConfirmationModal";
+import {GapiModule} from "./google/GapiModule";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {DeleteConfirmationModal} from "./modal/DeleteConfirmationModal";
         BrowserModule,
         RouterModule.forChild(AppCommonRoutes),
         TranslateModule,
+        GapiModule,
         TasksModule
     ],
     declarations: [

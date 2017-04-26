@@ -1,14 +1,18 @@
 import {Injectable} from "@angular/core";
 import {GoogleApiConfig} from "../../config/GoogleApiConfig";
 import {Observable} from "rxjs";
+import {GoogleApi} from "./GoogleApi";
 import GoogleAuth = gapi.auth2.GoogleAuth;
+
 
 @Injectable()
 export class GoogleAuthService {
     private GoogleAuth: GoogleAuth = undefined;
 
-    constructor() {
-        this.loadGapiAuth().subscribe(auth => this.GoogleAuth = auth);
+    constructor(googleApi: GoogleApi) {
+        googleApi.onLoad(() => {
+            this.loadGapiAuth()
+        });
     }
 
     /**
@@ -19,10 +23,10 @@ export class GoogleAuthService {
             gapi.load('auth2', () => {
                 let auth = gapi.auth2.init(GoogleApiConfig.getConfig());
                 observer.next(auth);
+                this.GoogleAuth = auth;
                 return auth;
             });
         });
-
     }
 
     public getAuth(): Observable<GoogleAuth> {
