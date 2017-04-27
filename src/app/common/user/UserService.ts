@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import * as _ from "lodash";
+import {GoogleAuthService} from "ng-gapi/lib/GoogleAuthService";
 import GoogleUser = gapi.auth2.GoogleUser;
 import GoogleAuth = gapi.auth2.GoogleAuth;
 
@@ -9,7 +10,6 @@ export class UserService {
     private user: GoogleUser = undefined;
 
     constructor(private googleAuthService: GoogleAuthService) {
-
     }
 
     public setUser(user: GoogleUser): void {

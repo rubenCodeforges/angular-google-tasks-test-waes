@@ -14,7 +14,7 @@ export class SecurityService {
     constructor(private router: Router) {
     }
 
-    public denyAndRedirectOnAuthError(errorBody: GoogleHttpErrorBody) {
+    public denyAndRedirectOnAuthError(errorBody: any) {
         _.each(errorBody.error.errors, (error) => {
             if (error.reason == "authError") {
                 this.router.navigateByUrl('');
