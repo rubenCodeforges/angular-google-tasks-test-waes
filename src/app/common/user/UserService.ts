@@ -1,5 +1,4 @@
 import {Injectable} from "@angular/core";
-import {GoogleAuthService} from "../google/GoogleAuthService";
 import * as _ from "lodash";
 import GoogleUser = gapi.auth2.GoogleUser;
 import GoogleAuth = gapi.auth2.GoogleAuth;

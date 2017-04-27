@@ -12,7 +12,8 @@ import {TasksModule} from "../tasks/TasksModule";
 import {SecurityService} from "./security/SecurityService";
 import {AuthGuard} from "./security/AuthGuard";
 import {DeleteConfirmationModal} from "./modal/DeleteConfirmationModal";
-import {GapiModule} from "./google/GapiModule";
+import {GoogleApiModule} from "ng-gapi/lib/GoogleApiModule";
+import {GapiConfig} from "../config/GapiConfig";
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {GapiModule} from "./google/GapiModule";
         BrowserModule,
         RouterModule.forChild(AppCommonRoutes),
         TranslateModule,
-        GapiModule,
+        GoogleApiModule.setConfig(new GapiConfig()),
         TasksModule
     ],
     declarations: [
