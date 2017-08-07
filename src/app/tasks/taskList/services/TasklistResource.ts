@@ -2,9 +2,9 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Headers} from "@angular/http";
 import {GoogleTasksApi} from "../../../config/GoogleTasksApi";
-import {HttpService} from "../../../infrastructure/http/HttpService";
+import {HttpService} from "../../../common/http/HttpService";
 import {UserService} from "../../../common/user/UserService";
-import {CrudResource} from "../../../infrastructure/crud/CrudResource";
+import {CrudResource} from "../../../common/crud/CrudResource";
 import {ListResponse} from "../../_internal/ListResponse";
 
 @Injectable()

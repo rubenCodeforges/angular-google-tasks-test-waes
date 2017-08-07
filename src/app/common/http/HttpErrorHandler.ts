@@ -1,7 +1,7 @@
 import {Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
-import {SecurityService} from "../../common/security/SecurityService";
+import {SecurityService} from "../security/SecurityService";
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 

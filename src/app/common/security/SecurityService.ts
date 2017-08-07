@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {AbstractHttpError} from "../../infrastructure/http/AbstractHttpError";
+import {AbstractHttpError} from "../http/AbstractHttpError";
 import {GoogleHttpErrorBody} from "../google/GoogleHttpError";
 import * as _ from "lodash";
 import {Router} from "@angular/router";

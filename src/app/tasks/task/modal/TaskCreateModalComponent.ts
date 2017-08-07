@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {FormService} from "../../../infrastructure/form/FormService";
+import {FormService} from "../../../common/form/FormService";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TaskListModel} from "../services/TasklistModel";
 import {Task} from "../services/TaskResource";

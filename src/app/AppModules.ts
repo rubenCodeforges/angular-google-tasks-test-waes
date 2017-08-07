@@ -12,10 +12,11 @@ import {PartsManagerModule} from "./partsManager/PartsManagerModule";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AppCommonModule} from "./common/AppCommonModule";
 import {LoginComponent} from "./login/LoginComponent";
-import {HttpService} from "./infrastructure/http/HttpService";
+import {HttpService} from "./common/http/HttpService";
 import {TasksModule} from "./tasks/TasksModule";
-import {HttpErrorHandler} from "./infrastructure/http/HttpErrorHandler";
+import {HttpErrorHandler} from "./common/http/HttpErrorHandler";
 import {environment} from "../environments/environment";
+import {ClientConfig, GoogleApiModule, NG_GAPI_CONFIG} from "ng-gapi";
 
 
 export function HttpLoaderFactory(http: Http) {
@@ -23,6 +24,16 @@ export function HttpLoaderFactory(http: Http) {
         `${environment.base}assets/i18n/` : '/assets/i18n/';
     return new TranslateHttpLoader(http, prefix);
 }
+
+//TODO: Add your CLIENT_ID
+let gapiClientConfig: ClientConfig = {
+    clientId: "372063809670-qoggl887ba9vpt7aclf411hhk9f7icil.apps.googleusercontent.com",
+    discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
+    scope: [
+        "https://www.googleapis.com/auth/analytics.readonly",
+        "https://www.googleapis.com/auth/analytics"
+    ].join(" ")
+};
 
 @NgModule({
     imports: [
@@ -36,6 +47,10 @@ export function HttpLoaderFactory(http: Http) {
                 useFactory: HttpLoaderFactory,
                 deps: [Http]
             }
+        }),
+        GoogleApiModule.forRoot({
+            provide: NG_GAPI_CONFIG,
+            useValue: gapiClientConfig
         }),
         NgbModule.forRoot(),
         AppCommonModule,

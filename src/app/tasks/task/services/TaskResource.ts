@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {GoogleTasksApi} from "../../../config/GoogleTasksApi";
-import {HttpService} from "../../../infrastructure/http/HttpService";
+import {HttpService} from "../../../common/http/HttpService";
 import {UserService} from "../../../common/user/UserService";
 import {Observable} from "rxjs";
 import {ListResponse} from "../../_internal/ListResponse";
