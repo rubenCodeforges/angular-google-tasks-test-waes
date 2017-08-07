@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, NgZone} from "@angular/core";
 import * as _ from "lodash";
 import {GoogleAuthService} from "ng-gapi/lib/GoogleAuthService";
 import GoogleUser = gapi.auth2.GoogleUser;
@@ -9,7 +9,8 @@ export class UserService {
     public static readonly SESSION_STORAGE_KEY: string = "accessToken";
     private user: GoogleUser = undefined;
 
-    constructor(private googleAuthService: GoogleAuthService) {
+    constructor(private googleAuthService: GoogleAuthService,
+                private ngZone: NgZone) {
     }
 
     public setUser(user: GoogleUser): void {
@@ -51,10 +52,12 @@ export class UserService {
     }
 
     private signInSuccessHandler(res: GoogleUser) {
-        this.user = res;
-        sessionStorage.setItem(
-            UserService.SESSION_STORAGE_KEY, res.getAuthResponse().access_token
-        );
+        this.ngZone.run(() => {
+            this.user = res;
+            sessionStorage.setItem(
+                UserService.SESSION_STORAGE_KEY, res.getAuthResponse().access_token
+            );
+        });
     }
 
     private signInErrorHandler(err) {
