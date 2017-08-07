@@ -27,7 +27,7 @@ export function HttpLoaderFactory(http: Http) {
 
 //TODO: Add your CLIENT_ID
 let gapiClientConfig: ClientConfig = {
-    clientId: "372063809670-qoggl887ba9vpt7aclf411hhk9f7icil.apps.googleusercontent.com",
+    clientId: "CLIENT_ID",
     discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
     scope: [
         "https://www.googleapis.com/auth/analytics.readonly",
